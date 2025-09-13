@@ -1,0 +1,32 @@
+name: App Setup and Output Printer
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  app-setup-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run gha-appsetup action
+        id: appsetup
+        uses: marcelonyc/gha-appsetup@main
+        with:
+          application_id: ${{ github.repository_id }}
+
+      - name: Print all outputs from gha-appsetup
+        run: |
+          echo "Outputs from gha-appsetup:"
+          for key in $(echo "${{ toJson(steps.appsetup.outputs) }}" | jq -r 'keys[]'); do
+            value=$(echo "${{ toJson(steps.appsetup.outputs) }}" | jq -r --arg k "$key" '.[$k]')
+            echo "$key: $value"
+          done
+        shell: bash
+        env:
+          # Pass all outputs as environment variables if needed
+          APPSETUP_OUTPUTS: ${{ toJson(steps.appsetup.outputs) }}
