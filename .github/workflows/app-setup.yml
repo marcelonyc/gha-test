@@ -15,6 +15,8 @@ jobs:
 
       - name: Run gha-appsetup action
         id: appsetup
+        env:
+          application_id: ${{ github.repository_id }}
         uses: marcelonyc/gha-appsetup@main
         with:
           application_id: ${{ github.repository_id }}
