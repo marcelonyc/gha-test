@@ -25,7 +25,7 @@ jobs:
       - name: Print all outputs from gha-appsetup
         run: |
           echo "Outputs from gha-appsetup:"
-          echo "EL LOCAL ${{ toJson(steps.appsetup.outputs) }}"
+          echo "EL LOCAL ${{ steps.appsetup.outputs }}"
           # for key in $(echo "${{ toJson(steps.appsetup.outputs) }}" | jq -r 'keys[]'); do
           #   value=$(echo "${{ toJson(steps.appsetup.outputs) }}" | jq -r --arg k "$key" '.[$k]')
           #   echo "$key: $value"
