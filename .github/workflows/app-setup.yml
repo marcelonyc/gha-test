@@ -28,5 +28,5 @@ jobs:
           echo "EL LOCAL ${elout}"
           echo "DONE"
         env:
-          elout: ${{ fromJSON(steps.appsetup.outputs) }}
+          elout: ${{ fromJSON(steps.appsetup.outputs.repo_list) }}
         shell: bash
