@@ -29,7 +29,10 @@ jobs:
         id: repo-values
         run: |
           echo "Outputs from gha-appsetup:"
-          cat ${{ steps.appsetup.outputs.repo_list }} >> "${GITHUB_OUTPUT}"
+          for _var in `cat ${{ steps.appsetup.outputs.repo_list }}`
+          do
+            echo ${_var} >> "${GITHUB_OUTPUT}"
+          done
 
       - name: Get repo values
         run: |
