@@ -28,8 +28,8 @@ jobs:
         id: repo-values
         run: |
           echo "Outputs from gha-appsetup:"
-          echo "${{ steps.appsetup.outputs.metadata }}" 
-          echo "${{ steps.appsetup.outputs.metadata }}" >> "${GITHUB_OUTPUT}"
+          echo "${{ steps.appsetup.outputs.repo_list }}" 
+          cat "${{ steps.appsetup.outputs.repo_list }}" >> "${GITHUB_OUTPUT}"
 
       - name: Get repo values
         run: |
