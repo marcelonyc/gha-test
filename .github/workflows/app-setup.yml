@@ -27,7 +27,7 @@ jobs:
       - name: Print all outputs from gha-appsetup
         run: |
           echo "Outputs from gha-appsetup:"
-          echo "${{ steps.appsetup.outputs.metadata }}"
+          echo "Docker: ${{ steps.appsetup.outputs.docker-all }}"
 
           
         shell: bash
