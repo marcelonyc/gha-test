@@ -34,6 +34,10 @@ jobs:
       - name: Get repo values
         run: |
           echo "Docker ${{ steps.repo-values.outputs.docker-all }}"
+          echo "Generic ${{ steps.repo-values.outputs.generic-all }}"
+          echo "Docker -Dev${{ steps.repo-values.outputs.docker-dev }}"
+
+
 
           
         shell: bash
