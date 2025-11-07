@@ -27,8 +27,7 @@ jobs:
       - name: Print all outputs from gha-appsetup
         run: |
           echo "Outputs from gha-appsetup:"
-          echo "EL LOCAL ${elout}"
-          echo "DONE"
-        env:
-          elout: ${{ steps.appsetup.outputs }}
+          echo "Docker ${{ steps.appsetup.outputs.docker-all }}"
+          echo "Docker ${{ steps.appsetup.outputs.generic-all }}"
+          
         shell: bash
