@@ -25,22 +25,17 @@ jobs:
           ams_endpoint: ${{ secrets.ams_endpoint }}
         
           
-      - name: Load Repo list into environment
-        id: repo-values
-        run: |
-          echo "Outputs from gha-appsetup:"
-          for _var in `cat ${{ steps.appsetup.outputs.repo_list }}`
-          do
-            echo ${_var} >> "${GITHUB_OUTPUT}"
-          done
+      # - name: Load Repo list into environment
+      #   id: repo-values
+      #   run: |
+      #     echo "Outputs from gha-appsetup:"
+      #     for _var in `cat ${{ steps.appsetup.outputs.repo_list }}`
+      #     do
+      #       echo ${_var} >> "${GITHUB_OUTPUT}"
+      #     done
 
       - name: Get repo values
         run: |
-          echo "Docker ${{ steps.repo-values.outputs.docker-all }}"
-          echo "Generic ${{ steps.repo-values.outputs.generic-all }}"
-          echo "Docker -Dev${{ steps.repo-values.outputs.docker-dev }}"
-
-
-
+          echo "Docker" $(appconfig docker dev)
           
         shell: bash
