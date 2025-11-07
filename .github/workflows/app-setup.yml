@@ -25,9 +25,15 @@ jobs:
           ams_endpoint: ${{ secrets.ams_endpoint }}
 
       - name: Print all outputs from gha-appsetup
+        id: repo-values
         run: |
           echo "Outputs from gha-appsetup:"
-          echo "Docker: ${{ steps.appsetup.outputs.docker-all }}"
+          echo "${{ steps.appsetup.outputs.metadata }}" 
+          echo "${{ steps.appsetup.outputs.metadata }}" >> "${GITHUB_OUTPUT}"
+
+      - name: Get repo values
+        run: |
+          echo "Docker ${{ steps.repo-values.outputs.docker-all }}"
 
           
         shell: bash
