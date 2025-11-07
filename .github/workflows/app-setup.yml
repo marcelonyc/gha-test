@@ -22,7 +22,7 @@ jobs:
         with:
           application_key: ${{ secrets.application_key }}
           ams_token: ${{ secrets.ams_token }}
-          ams_endpoint: ${{ secrets.endpoint }}
+          ams_endpoint: ${{ secrets.ams_endpoint }}
 
       - name: Print all outputs from gha-appsetup
         run: |
