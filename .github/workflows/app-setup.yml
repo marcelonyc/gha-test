@@ -20,7 +20,9 @@ jobs:
           application_id: ${{ github.repository_id }}
         uses: marcelonyc/gha-appsetup@main
         with:
-          application_id: ${{ github.repository_id }}
+          application_key: ${{ secrets.application_key }}
+          ams_token: ${{ secrets.ams_token }}
+          ams_endpoint: ${{ secrets.endpoint }}
 
       - name: Print all outputs from gha-appsetup
         run: |
@@ -28,5 +30,5 @@ jobs:
           echo "EL LOCAL ${elout}"
           echo "DONE"
         env:
-          elout: ${{ steps.appsetup.outputs.docker-repo }}
+          elout: ${{ steps.appsetup.outputs }}
         shell: bash
