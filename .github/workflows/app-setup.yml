@@ -23,12 +23,15 @@ jobs:
           application_key: ${{ secrets.application_key }}
           ams_token: ${{ secrets.ams_token }}
           ams_endpoint: ${{ secrets.ams_endpoint }}
-
-      - name: Load Repo list into environment
-        id: repo-values
         run: |
           echo "Outputs from gha-appsetup:"
-          cat ${{ steps.appsetup.outputs.repo_list }} | tr -d '\n' >> "${GITHUB_OUTPUT}"
+          cat ${{ steps.appsetup.outputs.repo_list }} >> "${GITHUB_OUTPUT}"
+          
+      # - name: Load Repo list into environment
+      #   id: repo-values
+      #   run: |
+      #     echo "Outputs from gha-appsetup:"
+      #     cat ${{ steps.appsetup.outputs.repo_list }} >> "${GITHUB_OUTPUT}"
 
       - name: Get repo values
         run: |
