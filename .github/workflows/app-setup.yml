@@ -33,9 +33,14 @@ jobs:
       #     do
       #       echo ${_var} >> "${GITHUB_OUTPUT}"
       #     done
-
+      - name: Get Docker Repository
+        id: docker-repo
+        run: |
+          DOCKER_REPO=$(appconfig docker dev)
+          echo "repository=$DOCKER_REPO" >> $GITHUB_OUTPUT
+          
       - name: Get repo values
         run: |
-          echo "Docker" $(appconfig docker dev)
+          echo "Docker: ${{ steps.docker-repo.outputs.repository }}" 
           
         shell: bash
